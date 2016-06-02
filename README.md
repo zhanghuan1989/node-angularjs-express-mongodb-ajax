@@ -1,5 +1,5 @@
 # node-angularjs-express-mongodb-ajax
-node-angularjs-express-mongodb+ajax
+
 node+angularjs+express+mongodb+ajax入门简单实例
 
 使用方法
