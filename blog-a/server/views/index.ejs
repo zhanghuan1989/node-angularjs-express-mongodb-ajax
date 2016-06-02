@@ -1,0 +1,72 @@
+<% include header.ejs %>
+<!-- 模态框（Modal） -->
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="myModal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close"
+                data-dismiss="modal" aria-hidden="true">
+          &times;
+        </button>
+        <h4 class="modal-title" id="myModalLabel">提示</h4>
+      </div>
+      <div class="modal-body">确认删除吗？</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary" id="sureBtn">确认</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="container">
+  <header class="header">
+    <!-- logo start-->
+    <div class="brand"><a href="<%=projectDir%>" class="logo">管理后台</a></div>
+    <div class="toggle-navigation toggle-left">
+      <button id="toggle-left" type="button" data-toggle="tooltip" data-placement="right" title="" class="btn btn-default" data-original-title="切换左栏"><i class="glyphicon glyphicon-th-list"></i></button>
+    </div>
+    <span class="user-info">
+      <% if(user){ %>
+      <span class="success-name">欢迎【<%=user.name%>】登录</span>&nbsp;&nbsp;<a href="<%=projectDir%>/user/loginout">退出</a>
+      <% } %>
+    </span>
+    <!-- logo end-->
+  </header>
+  <!-- sidebar left start-->
+  <aside class="sidebar">
+    <div id="leftside-navigation" class="nano">
+      <ul class="nano-content">
+        <li><a href="/#!<%=projectDir%>"><i class="glyphicon glyphicon-home"></i><span>首页</span></a></li>
+        <li class="sub-menu active"><a href="javascript:void(0);"><i class="glyphicon glyphicon-user"></i><span>用户</span><i class="arrow glyphicon glyphicon-menu-right pull-right"></i></a>
+          <ul>
+            <li class="active"><a href="<%=projectDir%>/user/login">登录</a></li>
+            <li><a href="<%=projectDir%>/user/register">注册</a></li>
+          </ul>
+        </li>
+        <li class="sub-menu"><a href="/#!/list"><i class="glyphicon glyphicon-th-list"></i><span>列表</span><i class="arrow glyphicon glyphicon-menu-right pull-right"></i></a>
+          <ul>
+            <li><a href="/#!/list/create">添加</a></li>
+            <li><a href="/#!/list/addAjax">Ajax添加</a></li>
+            <li><a href="/#!/list/listAngular">angular接口列表</a></li>
+            <li><a href="/#!/list/listAjax">Ajax接口列表</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </aside>
+  <!-- sidebar left end-->
+  <!-- main content start-->
+  <section class="main-content-wrapper">
+    <section id="main-content">
+      <!-- ngRoute显示模板 -->
+      <section ng-view></section>
+    </section>
+    <!-- 注意引入文件中的单引号 -->
+    <!-- angular html -->
+    <section ng-include="'views/inputTest.html'"></section>
+  </section>
+  <!-- main content end-->
+</section>
+
+<% include footer.ejs %>
